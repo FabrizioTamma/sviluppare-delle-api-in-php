@@ -90,7 +90,43 @@ function get_actors(){
 
 
 function get_directors(){
+    global $servername, $username, $password, $database, $port;
 
+    // 1. Fetch results into an associative array
+    $directors = array();
+    // 2. Create connection
+    // $conn = new mysqli($servername, $username, $password, $database, $port);
+    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    
+    $query = "select * from directors;";
+    
+    
+    if(isset($first_name)){
+        $query = 'select * from directors where title like "%' . $first_name . '%" ';
+    }
+
+    // 3. Execute the query
+    $result = $conn->query($query);
+
+    // 4. Add an item to the $movies array
+    while($row = $result->fetch_assoc()){
+        $first_name[] = $row; // Add an item to the array
+    }
+    /*
+    echo "<pre>";
+    print_r( $movies);
+    echo "</pre>";
+    */
+    // Close the connection
+    $conn->close();
+
+    return $first_name;
 }
 
 function get_genres(){

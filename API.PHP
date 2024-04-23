@@ -32,4 +32,22 @@
   }
 
 exit;
+
+
+require_once("connect.php");
+  if ($_SERVER['PATH_INFO'] == '/director') {
+      if ( isset($_GET['first_name'])){
+        $directors = get_directors($_GET ['first_name']);
+      } else $directors = get_directors(NULL); 
+    
+      http_response_code(200);
+      header('Content-Type: application/json');
+      echo json_encode([
+      'status' => 200,
+      'message' => 'method allowed by marco ferri',
+      'payload' => $directors
+      ]);
+  }
+
+exit;
 ?>
