@@ -39,6 +39,26 @@ VALUES
 	(2,'Marlon','Brando',NULL),
 	(3,'Samuel L.','Jackson',NULL),
 	(4,'Leonardo','DiCaprio',NULL);
+	(5, 'Elijah', 'Wood', NULL),
+	(6, 'Ian', 'McKellen', NULL),
+	(7, 'Sean', 'Astin', NULL),
+	(8, 'Viggo', 'Mortensen', NULL),
+	(9, 'Orlando', 'Bloom', NULL),
+	(10, 'John', 'Hurt', NULL),
+	(11, 'Anthony', 'Hopkins', NULL),
+	(12, 'Jodie', 'Foster', NULL),
+	(13, 'Morgan', 'Freeman', NULL),
+	(14, 'Brad', 'Pitt', NULL),
+	(15, 'Domhnall', 'Gleeson', NULL),
+	(16, 'Alicia', 'Vikander', NULL),
+	(17, 'Arnold', 'Schwarzenegger', NULL),
+	(18, 'Linda', 'Hamilton', NULL),
+	(19, 'Michael', 'Fassbender', NULL),
+	(20, 'Henry', 'Cavill', NULL),
+	(21, 'Harrison', 'Ford', NULL),
+	(22, 'Rutger', 'Hauer', NULL),
+	(23, 'Sean', 'Young', NULL);
+
 
 /*!40000 ALTER TABLE `actor` ENABLE KEYS */;
 
@@ -62,6 +82,16 @@ VALUES
 	(2,'Francis Ford','Coppola',NULL),
 	(3,'Quentin','Tarantino',NULL),
 	(4,'Christopher','Nolan',NULL);
+	(5, 'Peter', 'Jackson', NULL),
+	(6, 'Jonathan', 'Demme', NULL),
+	(7, 'David', 'Fincher', NULL),
+	(8, 'Christopher', 'Nolan', NULL),
+	(9, 'Alex', 'Garland', NULL),
+	(10, 'James', 'Cameron', NULL),
+	(11, 'Ridley', 'Scott', NULL),
+	(12, 'Michael', 'Bay', NULL),
+	(13, 'James', 'Cameron', NULL),
+	(14, 'Paul', 'Verhoeven', NULL);
 
 /*!40000 ALTER TABLE `director` ENABLE KEYS */;
 
