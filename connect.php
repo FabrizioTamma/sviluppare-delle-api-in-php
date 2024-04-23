@@ -34,7 +34,23 @@ function get_movies($title){
 
     // 4. Add an item to the $movies array
     while($row = $result->fetch_assoc()){
-        $movies[] = $row; // Add an item to the array
+        $movies[] = $row;
+        $actors[] = $row;
+        $lastmovie = $movie[count($movies) -1];
+        $movieid = $lastmovie['id'];
+        $actors_sql = " SELECT a. * FROM movie_actor ma INNER JOIN actor a ON ma.actor_id = a.id = a.id WHERE ma.movie_id = $movieid";
+
+        $actorResult = mysqli_query($conn, $actors_sql);
+        if (!$actorResult){
+            die("Error retrieving actors from movie $movieId: " . mysqli_error($conn) );
+        }
+        
+        $movies [count($movies) -1]["actors"] = array();
+        while ($actorRow = mysqli_fetch_assoc($actorResult)){
+            $movies[count($movies) -1]["actors"][] = $actorRow;
+        }
+
+        // Add an item to the array
     }
     /*
     echo "<pre>";
@@ -65,8 +81,8 @@ function get_actors(){
     $query = "select * from actors;";
     
     
-    if(isset($first_name)){
-        $query = 'select * from actors where title like "%' . $first_name . '%" ';
+    if(isset($last_name)){
+        $query = 'select * from actors where last_name like "%' . $last_name . '%" ';
     }
 
     // 3. Execute the query
@@ -74,7 +90,7 @@ function get_actors(){
 
     // 4. Add an item to the $movies array
     while($row = $result->fetch_assoc()){
-        $first_name[] = $row; // Add an item to the array
+        $actors[] = $row; // Add an item to the array
     }
     /*
     echo "<pre>";
@@ -84,7 +100,7 @@ function get_actors(){
     // Close the connection
     $conn->close();
 
-    return $first_name;
+    return $actors;
 }
 
 
@@ -107,8 +123,8 @@ function get_directors(){
     $query = "select * from directors;";
     
     
-    if(isset($first_name)){
-        $query = 'select * from directors where title like "%' . $first_name . '%" ';
+    if(isset($last_name)){
+        $query = 'select * from directors where last_name like "%' . $last_name . '%" ';
     }
 
     // 3. Execute the query
@@ -116,7 +132,7 @@ function get_directors(){
 
     // 4. Add an item to the $movies array
     while($row = $result->fetch_assoc()){
-        $first_name[] = $row; // Add an item to the array
+        $directors[] = $row; // Add an item to the array
     }
     /*
     echo "<pre>";
@@ -126,11 +142,47 @@ function get_directors(){
     // Close the connection
     $conn->close();
 
-    return $first_name;
+    return $directors;
 }
 
 function get_genres(){
+    global $servername, $username, $password, $database, $port;
+
+    // 1. Fetch results into an associative array
+    $genres = array();
+    // 2. Create connection
+    // $conn = new mysqli($servername, $username, $password, $database, $port);
+    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     
+    $query = "select * from genres;";
+    
+    
+    if(isset($last_name)){
+        $query = 'select * from genres where genre like "%' . $name . '%" ';
+    }
+
+    // 3. Execute the query
+    $result = $conn->query($query);
+
+    // 4. Add an item to the $movies array
+    while($row = $result->fetch_assoc()){
+        $genres[] = $row; // Add an item to the array
+    }
+    /*
+    echo "<pre>";
+    print_r( $movies);
+    echo "</pre>";
+    */
+    // Close the connection
+    $conn->close();
+
+    return $genres;
 }
 
 ?>
