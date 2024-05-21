@@ -16,7 +16,7 @@
         
         $length_vector = count($a);
 
-        for($i = 0; $i < $len_vector; $i++){
+        for($i = 0; $i < $length_vector; $i++){
             $modulo_a = $modulo_a + pow($a[$i], 2);
             $modulo_b = $modulo_b + pow($b[$i], 2);
         }
@@ -25,7 +25,7 @@
         $denominatore = $modulo_a * $modulo_b;
         // calcolo numeratore
         $numeratore = 0;
-        for($i = 0; $i < $len_vector; $i++){
+        for($i = 0; $i < $lenght_vector; $i++){
             $numeratore = $numeratore + $a[$i] * $b[$i];
         }
         return $numeratore / $denominatore;
@@ -33,8 +33,8 @@
     
     
     echo cosine_similarity(
-        [3, 0, 2, 0],
-        [0, 0, 4, 5]
+        [1, 1, 0, 2],
+        [1, 0, 1, 5]
     );
      
 ?>
